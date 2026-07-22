@@ -8,7 +8,7 @@ const SUPABASE_KEY =
 
 
 const DOMAIN =
-"https://YOURDOMAIN.COM";
+"https://gtle.netlify.app";
 
 
 
