@@ -8,7 +8,7 @@ const SUPABASE_KEY =
 
 
 const DOMAIN =
-"https://gtle.netlify.app";
+"https://exams.ntcverify.com";
 
 
 
@@ -68,11 +68,9 @@ return;
 
 
 let qrURL =
-client
-.storage
-.from("documents")
-.getPublicUrl(filename)
-.data.publicUrl;
+DOMAIN +
+"/open.html?file=" +
+encodeURIComponent(filename);
 
 
 
