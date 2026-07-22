@@ -68,10 +68,11 @@ return;
 
 
 let qrURL =
-DOMAIN+
-"/view.html?file="
-+
-encodeURIComponent(filename);
+client
+.storage
+.from("documents")
+.getPublicUrl(filename)
+.data.publicUrl;
 
 
 
