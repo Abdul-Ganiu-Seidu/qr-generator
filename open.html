@@ -12,14 +12,74 @@ NTC Document Verification
 <style>
 
 body{
-margin:0;
+    margin:0;
+    padding:0;
+    background:#f1f1f1;
+    font-family:Arial, sans-serif;
 }
 
-iframe{
-width:100%;
-height:100vh;
-border:none;
+
+.header{
+
+    text-align:center;
+    background:white;
+    padding:20px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+
 }
+
+
+.header h2{
+
+    margin:0;
+    color:#333;
+
+}
+
+
+
+.document-container{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
+
+}
+
+
+
+iframe{
+
+    width:80%;
+    height:850px;
+    border:none;
+    background:white;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    border-radius:8px;
+
+}
+
+
+
+@media(max-width:768px){
+
+iframe{
+
+    width:100%;
+    height:700px;
+
+}
+
+
+.document-container{
+
+    padding:10px;
+
+}
+
+}
+
 
 </style>
 
@@ -29,7 +89,22 @@ border:none;
 <body>
 
 
+<div class="header">
+
+<h2>
+NTC Document Verification
+</h2>
+
+</div>
+
+
+
+<div class="document-container">
+
 <iframe id="viewer"></iframe>
+
+</div>
+
 
 
 
@@ -65,6 +140,9 @@ params.get("file");
 
 
 
+if(filename){
+
+
 const pdfURL =
 client
 .storage
@@ -75,6 +153,17 @@ client
 
 
 document.getElementById("viewer").src = pdfURL;
+
+
+}
+else{
+
+
+document.body.innerHTML =
+"<h2 style='text-align:center'>Document not found</h2>";
+
+
+}
 
 
 
