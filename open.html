@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>
+NTC Document Verification
+</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+
+<body>
+
+<h3 id="message">
+Loading document...
+</h3>
+
+
+<script>
+
+const SUPABASE_URL =
+"https://nnjdhqlrosjjkogolqdo.supabase.co";
+
+
+const SUPABASE_KEY =
+"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5uamRocWxyb3NqamtvZ29scWRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3Mjk5NzUsImV4cCI6MjEwMDMwNTk3NX0.qsFp3OxuvuvQLeTE5DRYhlfZxItfAevnZt456eFPsOg";
+
+
+const client =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+
+
+const filename =
+params.get("file");
+
+
+
+if(filename){
+
+
+const pdfURL =
+client
+.storage
+.from("documents")
+.getPublicUrl(filename)
+.data.publicUrl;
+
+
+
+window.location.href = pdfURL;
+
+
+}
+else{
+
+
+document.getElementById("message").innerHTML =
+"No document found";
+
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
